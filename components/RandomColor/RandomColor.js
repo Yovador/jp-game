@@ -2,14 +2,26 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 
+// Description de la Class Color
+//
+// *** Variable : ***
+//
+// name (string) : C'est le nom de la couleur affiché par le jeu. e.g "Rouge"
+// backgroundColor(string) : Hexadecimal de la couleur de fond à affiché pour cette couleur e.g "#f54242"
+// pivotHue(int) : valeur pivot de la teinte de la couleur. On y ajoute ou soustrait range pour connaitre les bornes max et min de notre intervalle de validité
+// range(int): valeur à ajouter ou soustraire à pivoit pour obtenir les bornes de validité.  pivot - range donc la borne minimale, et pivot + range donne la borne maximal
+// 
+//
+// *** Fonction : ***
+// CheckIfColorCorrespond(r, g, b) : Prend en parametre trois int representant la valeur rgb de la couleur à tester. Convertie cette valeur rgb en hsl puis regarde si la valeur H (Hue, la teinte de la couleur) appartient à l'intervalle de validité.
+
 class Color{
 
-    constructor(name, backgroundColor, range, pivotHue){
+    constructor(name, backgroundColor, pivotHue, range ){
         this.name = name;
         this.backgroundColor = backgroundColor;
-        this.range = range;
         this.pivotHue = pivotHue;
-
+        this.range = range;
     }
 
     CheckIfColorCorrespond(r, g, b){
@@ -27,7 +39,9 @@ class Color{
         let s = 0
         let l = 0
 
-        //Pour le moment ou n'utilise que la Hue, le reste n'est pas obligatoire
+        //Pour le moment ou n'utilise que la Hue, on fera le reste si on a le temps. Mais du coup le blanc le noir
+        //et les teintes de gris risque de donner des résultats inatendu. Pour changer cela il faudra prendre en compte 
+        //la saturation S et la luminosité L de la couleur. Pour le moment elle ne sont pas calculé. 
         
         // Calculate hue
         // No difference
@@ -74,10 +88,10 @@ class Color{
 
 }
 
-const redColor = new Color("Red", "#f54242", 15, 0)
-const blueColor = new Color("Blue", "#2ecbff", 30, 200)
-const greenColor = new Color("Green", "#47e32b", 38, 112)
-const yellowColor = new Color("Yellow", "#e5e82a", 10, 60)
+const redColor = new Color("Red", "#f54242", 0, 15)
+const blueColor = new Color("Blue", "#2ecbff", 200, 30)
+const greenColor = new Color("Green", "#47e32b", 112, 38)
+const yellowColor = new Color("Yellow", "#e5e82a", 60, 10)
 
 const allColor = [redColor, blueColor, greenColor, yellowColor]
 

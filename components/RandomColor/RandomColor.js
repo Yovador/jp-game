@@ -88,25 +88,31 @@ class Color{
 
 }
 
+//Création des couleurs
 const redColor = new Color("Red", "#f54242", 0, 15)
 const blueColor = new Color("Blue", "#2ecbff", 200, 30)
 const greenColor = new Color("Green", "#47e32b", 112, 38)
 const yellowColor = new Color("Yellow", "#e5e82a", 60, 10)
 
+//Toute les couleurs sont stockés dans allColor
 const allColor = [redColor, blueColor, greenColor, yellowColor]
 
+//Variable de test de la comparaison
 const testRGB = [0,0,0]
 
 class RandomColor extends React.Component {
 
     constructor(props){
         super(props);
-        
+
         this.ChooseRandomColor = this.ChooseRandomColor.bind(this);
+
         this.state = {
+            //Couleur actuel affiché à l'écran
             currentColor : this.ChooseRandomColor(allColor)
         };
 
+        //Style de Random color, semblable à du CSS
         this.styles = StyleSheet.create({
             container: {
               width: "100%",
@@ -118,6 +124,7 @@ class RandomColor extends React.Component {
           });
     }
 
+    //Renvoie une couleur aléatoire parmis toute les couleurs possibles.
     ChooseRandomColor(colorArray){
         const indexColor = Math.floor(Math.random() * colorArray.length)
 
@@ -139,7 +146,5 @@ class RandomColor extends React.Component {
     }
 
 }
-
-
  
 export default RandomColor ;

@@ -9,6 +9,7 @@ class Color{
         this.backgroundColor = backgroundColor;
         this.range = range;
         this.pivotHue = pivotHue;
+
     }
 
     CheckIfColorCorrespond(r, g, b){
@@ -74,19 +75,57 @@ class Color{
 }
 
 const redColor = new Color("Red", "#f54242", 15, 0)
+const blueColor = new Color("Blue", "#2ecbff", 30, 200)
+const greenColor = new Color("Green", "#47e32b", 38, 112)
+const yellowColor = new Color("Yellow", "#e5e82a", 10, 60)
+
+const allColor = [redColor, blueColor, greenColor, yellowColor]
+
 const testRGB = [0,0,0]
 
 class RandomColor extends React.Component {
 
+    constructor(props){
+        super(props);
+        
+        this.ChooseRandomColor = this.ChooseRandomColor.bind(this);
+        this.state = {
+            currentColor : this.ChooseRandomColor(allColor)
+        };
+
+        this.styles = StyleSheet.create({
+            container: {
+              width: "100%",
+              height: "100%",
+              backgroundColor: this.state.currentColor.backgroundColor,
+              justifyContent: 'center',
+              alignItems: 'center'
+            },
+          });
+    }
+
+    ChooseRandomColor(colorArray){
+        const indexColor = Math.floor(Math.random() * colorArray.length)
+
+        return colorArray[indexColor]
+    }
+
+
     render() { 
+
+        let styles = this.styles
+        const {currentColor} = this.state
+
         return (
-            <View>
-                <Text> { redColor.name + " : " + redColor.backgroundColor + " / " + redColor.range + " / " + redColor.pivotHue} </Text>
-                <Text> { "Is color : " + redColor.CheckIfColorCorrespond( testRGB[0], testRGB[1],testRGB[2] ) } </Text>
+            <View style={styles.container} >
+                <Text> { currentColor.name + " : " + currentColor.backgroundColor + " / " + currentColor.range + " / " + currentColor.pivotHue} </Text>
+                <Text> { "Is color : " + currentColor.CheckIfColorCorrespond( testRGB[0], testRGB[1],testRGB[2] ) } </Text>
             </View>
         );
     }
 
 }
+
+
  
 export default RandomColor ;

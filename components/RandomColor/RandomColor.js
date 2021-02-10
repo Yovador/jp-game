@@ -121,7 +121,7 @@ class RandomColor extends React.Component {
               justifyContent: 'center',
               alignItems: 'center'
             },
-          });
+        });
     }
 
     //Renvoie une couleur aléatoire parmis toute les couleurs possibles.
@@ -130,7 +130,6 @@ class RandomColor extends React.Component {
 
         return colorArray[indexColor]
     }
-
 
     render() { 
 

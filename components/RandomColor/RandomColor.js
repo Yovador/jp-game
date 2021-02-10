@@ -24,10 +24,10 @@ class Color {
         this.range = range;
     }
 
-    CheckIfColorCorrespond(r, g, b) {
-        const normalizedR = r / 255
-        const normalizedG = g / 255
-        const normalizedB = b / 255
+    CheckIfColorCorrespond(rgb) {
+        const normalizedR = rgb[0] / 255
+        const normalizedG = rgb[1] / 255
+        const normalizedB = rgb[2] / 255
 
         console.log(normalizedR, normalizedG, normalizedB)
 
@@ -99,7 +99,7 @@ const purpleColor = new Color("Purple", "#7130c7", 275, 25)
 const allColor = [redColor, blueColor, greenColor, yellowColor, purpleColor]
 
 //Variable de test de la comparaison
-const testRGB = [0, 0, 0]
+const testRGB = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255) ]
 
 class RandomColor extends React.Component {
 
@@ -109,15 +109,17 @@ class RandomColor extends React.Component {
 
         this.state = {
             //Couleur actuel affiché à l'écran
-            currentColor: this.ChooseRandomColor(allColor)
-        };
+            currentColor: this.ChooseRandomColor(allColor),
+            photoTaken: false,
+            averagePhotoRGB: [0,0,0]
+        }
 
         //Style de Random color, semblable à du CSS
         this.styles = StyleSheet.create({
             container: {
                 padding: '1%'
             }
-        });
+        })
     }
 
     ChangeBackgroundColorParent = (value) => {
@@ -135,18 +137,54 @@ class RandomColor extends React.Component {
 
     GenerateNewColor = () => {
         console.log("GenerateNewColor")
-        this.setState({ currentColor: this.ChooseRandomColor(allColor) })
+        this.setState({ currentColor: this.ChooseRandomColor(allColor), photoTaken: false })
+    }
+
+    TakePhoto = () => {
+        //Code prise puis extraction Photo
+
+        console.log("Take Photo")
+        this.setState({photoTaken: true, averagePhotoRGB: testRGB})
+
+    }
+
+    ShowVictory = () => {
+
+        if(this.state.photoTaken){
+            console.log("Show Victory Photo Taken")
+
+            if(this.state.currentColor.CheckIfColorCorrespond(this.state.averagePhotoRGB)){
+                console.log("Show Victory : VICTORY")
+
+                return (
+                    <Text>Gagné !</Text>
+                )
+            }
+            else{
+                console.log("Show Victory : DEFEAT")
+
+                return (
+                    <Text>Perdu !</Text>
+                )
+            }
+        }
+        else{
+            return null
+        }
     }
 
     render() {
         console.log("Rendering...")
+        console.log(testRGB)
         let styles = this.styles
         const { currentColor } = this.state
 
         return (
             <View style={styles.container} >
+                {this.ShowVictory()}
                 <Text> {currentColor.name + " : " + currentColor.backgroundColor} </Text>
                 <Button title="New Color" onPress={() => { this.GenerateNewColor() }} />
+                <Button title="Take Photo" onPress={() => { this.TakePhoto() }} />
             </View>
         );
     }

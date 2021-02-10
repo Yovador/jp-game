@@ -115,7 +115,7 @@ class RandomColor extends React.Component {
         //Style de Random color, semblable à du CSS
         this.styles = StyleSheet.create({
             container: {
-                padding: '2rem'
+                
             },
         });
     }

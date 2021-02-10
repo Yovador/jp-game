@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 
 // Description de la Class Color
@@ -93,9 +93,10 @@ const redColor = new Color("Red", "#f54242", 0, 15)
 const blueColor = new Color("Blue", "#2ecbff", 200, 30)
 const greenColor = new Color("Green", "#47e32b", 112, 38)
 const yellowColor = new Color("Yellow", "#e5e82a", 60, 10)
+const purpleColor = new Color("Purple", "#7130c7", 275, 25)
 
 //Toute les couleurs sont stockés dans allColor
-const allColor = [redColor, blueColor, greenColor, yellowColor]
+const allColor = [redColor, blueColor, greenColor, yellowColor, purpleColor]
 
 //Variable de test de la comparaison
 const testRGB = [0,0,0]
@@ -106,6 +107,7 @@ class RandomColor extends React.Component {
         super(props);
 
         this.ChooseRandomColor = this.ChooseRandomColor.bind(this);
+        this.GenerateNewColor = this.GenerateNewColor.bind(this);
 
         this.state = {
             //Couleur actuel affiché à l'écran
@@ -117,7 +119,6 @@ class RandomColor extends React.Component {
             container: {
               width: "100%",
               height: "100%",
-              backgroundColor: this.state.currentColor.backgroundColor,
               justifyContent: 'center',
               alignItems: 'center'
             },
@@ -126,20 +127,28 @@ class RandomColor extends React.Component {
 
     //Renvoie une couleur aléatoire parmis toute les couleurs possibles.
     ChooseRandomColor(colorArray){
+        console.log("ChooseRandomColor")
         const indexColor = Math.floor(Math.random() * colorArray.length)
-
+        console.log(colorArray[indexColor])
         return colorArray[indexColor]
     }
 
-    render() { 
+    GenerateNewColor(){
+        console.log("GenerateNewColor")
+        this.setState({currentColor : this.ChooseRandomColor(allColor)})
+    }
 
+    render() { 
+        console.log("Rendering...")
         let styles = this.styles
         const {currentColor} = this.state
 
+        const dynamicStyles = {backgroundColor: this.state.currentColor.backgroundColor}
+
         return (
-            <View style={styles.container} >
-                <Text> { currentColor.name + " : " + currentColor.backgroundColor + " / " + currentColor.range + " / " + currentColor.pivotHue} </Text>
-                <Text> { "Is color : " + currentColor.CheckIfColorCorrespond( testRGB[0], testRGB[1],testRGB[2] ) } </Text>
+            <View style={[styles.container, dynamicStyles]} >
+                <Text> { currentColor.name + " : " + currentColor.backgroundColor } </Text>
+                <Button title="New Color" onPress={() => {this.GenerateNewColor()} }/>
             </View>
         );
     }

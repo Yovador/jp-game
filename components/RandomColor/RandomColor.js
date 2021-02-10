@@ -15,26 +15,26 @@ import { Button, StyleSheet, Text, View } from 'react-native';
 // *** Fonction : ***
 // CheckIfColorCorrespond(r, g, b) : Prend en parametre trois int representant la valeur rgb de la couleur à tester. Convertie cette valeur rgb en hsl puis regarde si la valeur H (Hue, la teinte de la couleur) appartient à l'intervalle de validité.
 
-class Color{
+class Color {
 
-    constructor(name, backgroundColor, pivotHue, range ){
+    constructor(name, backgroundColor, pivotHue, range) {
         this.name = name;
         this.backgroundColor = backgroundColor;
         this.pivotHue = pivotHue;
         this.range = range;
     }
 
-    CheckIfColorCorrespond(r, g, b){
-        const normalizedR = r/255
-        const normalizedG = g/255
-        const normalizedB = b/255
+    CheckIfColorCorrespond(r, g, b) {
+        const normalizedR = r / 255
+        const normalizedG = g / 255
+        const normalizedB = b / 255
 
         console.log(normalizedR, normalizedG, normalizedB)
 
         let cmin = Math.min(normalizedR, normalizedG, normalizedB)
         let cmax = Math.max(normalizedR, normalizedG, normalizedB)
         let delta = cmax - cmin
-        
+
         let h = 0
         let s = 0
         let l = 0
@@ -42,33 +42,33 @@ class Color{
         //Pour le moment ou n'utilise que la Hue, on fera le reste si on a le temps. Mais du coup le blanc le noir
         //et les teintes de gris risque de donner des résultats inatendu. Pour changer cela il faudra prendre en compte 
         //la saturation S et la luminosité L de la couleur. Pour le moment elle ne sont pas calculé. 
-        
+
         // Calculate hue
         // No difference
-        if (delta == 0){
+        if (delta == 0) {
             h = 0
             console.log("Delta 0")
         }
         // Red is max
-        else if (cmax == normalizedR){
+        else if (cmax == normalizedR) {
             h = ((normalizedG - normalizedB) / delta) % 6
             console.log("cmax is red")
         }
 
         // Green is max
-        else if (cmax == normalizedG){
+        else if (cmax == normalizedG) {
             h = (normalizedB - normalizedR) / delta + 2;
             console.log("cmax is blue")
 
         }
         // Blue is max
-        else{
+        else {
             h = (normalizedR - normalizedG) / delta + 4;
             console.log("cmax is green")
         }
 
         h = Math.round(h * 60);
-        
+
         console.log("hue " + h);
         // Make negative hues positive behind 360°
         /*if (h < 0)
@@ -76,10 +76,10 @@ class Color{
 
         let isColorCorresponding;
 
-        if(h <= this.pivotHue + this.range && h >= this.pivotHue - this.range ){
+        if (h <= this.pivotHue + this.range && h >= this.pivotHue - this.range) {
             isColorCorresponding = true;
         }
-        else{
+        else {
             isColorCorresponding = false;
         }
 
@@ -99,17 +99,17 @@ const purpleColor = new Color("Purple", "#7130c7", 275, 25)
 const allColor = [redColor, blueColor, greenColor, yellowColor, purpleColor]
 
 //Variable de test de la comparaison
-const testRGB = [0,0,0]
+const testRGB = [0, 0, 0]
 
 class RandomColor extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
 
 
         this.state = {
             //Couleur actuel affiché à l'écran
-            currentColor : this.ChooseRandomColor(allColor)
+            currentColor: this.ChooseRandomColor(allColor)
         };
 
         //Style de Random color, semblable à du CSS
@@ -120,12 +120,12 @@ class RandomColor extends React.Component {
         });
     }
 
-    ChangeBackgroundColorParent = (value) =>{
+    ChangeBackgroundColorParent = (value) => {
         this.props.changeBGC(value)
     }
 
     //Renvoie une couleur aléatoire parmis toute les couleurs possibles.
-    ChooseRandomColor = (colorArray) =>{
+    ChooseRandomColor = (colorArray) => {
         console.log("ChooseRandomColor")
         const indexColor = Math.floor(Math.random() * colorArray.length)
         console.log(colorArray[indexColor])
@@ -135,22 +135,22 @@ class RandomColor extends React.Component {
 
     GenerateNewColor = () => {
         console.log("GenerateNewColor")
-        this.setState({currentColor : this.ChooseRandomColor(allColor)})
+        this.setState({ currentColor: this.ChooseRandomColor(allColor) })
     }
 
-    render() { 
+    render() {
         console.log("Rendering...")
         let styles = this.styles
-        const {currentColor} = this.state
+        const { currentColor } = this.state
 
         return (
             <View style={styles.container} >
-                <Text> { currentColor.name + " : " + currentColor.backgroundColor } </Text>
-                <Button title="New Color" onPress={() => {this.GenerateNewColor()} }/>
+                <Text> {currentColor.name + " : " + currentColor.backgroundColor} </Text>
+                <Button title="New Color" onPress={() => { this.GenerateNewColor() }} />
             </View>
         );
     }
 
 }
- 
-export default RandomColor ;
+
+export default RandomColor;

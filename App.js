@@ -5,6 +5,7 @@ import RandomColor from './components/RandomColor/RandomColor';
 import CameraAcces from './components/CameraAcces';
 import ColorPicker from './components/ColorPicker';
 import styles from './AppStyles'
+import GetPixelColor from 'react-native-get-pixel-color';
 
 export default class App extends React.Component {
 
@@ -13,7 +14,7 @@ export default class App extends React.Component {
 
 
     this.state = {
-      appState: 0,                   //État de l'app. 0: Menu principal, 1: Dans le jeus
+      appState: 0,                   //État de l'app. 0: Menu principal, 1: Dans le jeu
       backgroundColor: "#6ecff0"      //Couleur de Fond
     }
   }

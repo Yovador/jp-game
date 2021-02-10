@@ -106,8 +106,6 @@ class RandomColor extends React.Component {
     constructor(props){
         super(props);
 
-        this.ChooseRandomColor = this.ChooseRandomColor.bind(this);
-        this.GenerateNewColor = this.GenerateNewColor.bind(this);
 
         this.state = {
             //Couleur actuel affiché à l'écran
@@ -117,23 +115,25 @@ class RandomColor extends React.Component {
         //Style de Random color, semblable à du CSS
         this.styles = StyleSheet.create({
             container: {
-              width: "100%",
-              height: "100%",
-              justifyContent: 'center',
-              alignItems: 'center'
+                padding: '2rem'
             },
         });
     }
 
+    ChangeBackgroundColorParent = (value) =>{
+        this.props.changeBGC(value)
+    }
+
     //Renvoie une couleur aléatoire parmis toute les couleurs possibles.
-    ChooseRandomColor(colorArray){
+    ChooseRandomColor = (colorArray) =>{
         console.log("ChooseRandomColor")
         const indexColor = Math.floor(Math.random() * colorArray.length)
         console.log(colorArray[indexColor])
+        this.ChangeBackgroundColorParent(colorArray[indexColor].backgroundColor)
         return colorArray[indexColor]
     }
 
-    GenerateNewColor(){
+    GenerateNewColor = () => {
         console.log("GenerateNewColor")
         this.setState({currentColor : this.ChooseRandomColor(allColor)})
     }
@@ -143,10 +143,8 @@ class RandomColor extends React.Component {
         let styles = this.styles
         const {currentColor} = this.state
 
-        const dynamicStyles = {backgroundColor: this.state.currentColor.backgroundColor}
-
         return (
-            <View style={[styles.container, dynamicStyles]} >
+            <View style={styles.container} >
                 <Text> { currentColor.name + " : " + currentColor.backgroundColor } </Text>
                 <Button title="New Color" onPress={() => {this.GenerateNewColor()} }/>
             </View>

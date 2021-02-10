@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Text, View, Button } from 'react-native';
 import RandomColor from './components/RandomColor/RandomColor';
+import CameraAcces from './components/RandomColor/CameraAcces';
 import styles from './AppStyles'
 
 export default class App extends React.Component {

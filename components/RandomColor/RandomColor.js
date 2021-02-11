@@ -11,13 +11,13 @@ const greenColor = new Color("Green", "#47e32b", [80, 150], [25, 100], [20, 100]
 const yellowColor = new Color("Yellow", "#e5e82a", [40, 70], [25, 100], [20, 100])
 const purpleColor = new Color("Purple", "#7130c7", [240, 300], [25, 100], [20, 100])
 const blackColor = new Color("Black", "#121211", [0, 360], [0, 100], [0, 20])
-const whiteColor = new Color("White", "#f7f6f5", [0, 360], [0, 25], [70, 100])
+const whiteColor = new Color("White", "#f7f6f5", [0, 360], [0, 40], [70, 100])
 
 //Toute les couleurs sont stockés dans allColor
 const allColor = [redColor, blueColor, greenColor, yellowColor, purpleColor, blackColor, whiteColor]
 
 //Variable de test de la comparaison
-const testRGB = [255, 13, 0]
+const testRGB = [221, 232, 237]
 
 class RandomColor extends React.Component {
 

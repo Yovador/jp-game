@@ -11,7 +11,6 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
 
-
     this.state = {
       appState: 0,                   //État de l'app. 0: Menu principal, 1: Dans le jeu
       backgroundColor: "#6ecff0"      //Couleur de Fond
@@ -29,6 +28,11 @@ export default class App extends React.Component {
   ChangeBackgroundColor = (value) => {
     console.log("BackgroundColorChange", value)
     this.setState({ backgroundColor: value })
+    
+  }
+
+  func = (id, value) =>{
+    tab[id] = value;
   }
 
 

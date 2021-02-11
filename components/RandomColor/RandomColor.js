@@ -100,7 +100,7 @@ class RandomColor extends React.Component {
                 {this.ShowVictory()}
                 <Text> {currentColor.name + " : " + currentColor.backgroundColor} </Text>
                 <Button title="New Color" onPress={() => { this.GenerateNewColor() }} />
-                <Button title="Take Photo" onPress={() => { this.TakePhoto() }} />
+                <Button title="Check Color Test" onPress={() => { this.TakePhoto() }} />
             </View>
         );
     }

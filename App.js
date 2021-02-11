@@ -4,6 +4,7 @@ import { Text, View, Button } from 'react-native';
 import CameraAcces from './components/CameraAcces';
 import styles from './AppStyles'
 import GetPixelColor from 'react-native-get-pixel-color';
+import RandomColor from './components/RandomColor/RandomColor';
 
 export default class App extends React.Component {
 
@@ -53,6 +54,7 @@ export default class App extends React.Component {
         <View style={[styles.container, additionalStyles]}>
 
           <Button title="Menu" onPress={() => { this.ChangeAppState(0) }} />
+          <RandomColor changeBGC = {this.ChangeBackgroundColor}/>
           <CameraAcces></CameraAcces>
         </View>
       )

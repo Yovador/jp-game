@@ -40,6 +40,7 @@ export default class App extends React.Component {
 
       return (
         <View style={[styles.container, additionalStyles]}>
+          <StatusBar></StatusBar>
 
           <Text>CATCH THE COLOR</Text>
           <Button title="Start" onPress={() => { this.ChangeAppState(1) }} />
@@ -53,6 +54,7 @@ export default class App extends React.Component {
       return (
         <View style={[styles.container, additionalStyles]}>
 
+          <StatusBar></StatusBar>
           <Button title="Menu" onPress={() => { this.ChangeAppState(0) }} />
           <RandomColor changeBGC = {this.ChangeBackgroundColor}/>
           <CameraAcces></CameraAcces>

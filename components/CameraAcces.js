@@ -55,6 +55,8 @@ export default class App extends React.Component {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images
     });
+    
+    console.log(result)
   }
   
 

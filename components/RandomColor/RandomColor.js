@@ -5,17 +5,19 @@ import Color from './Color'
 
 
 //Création des couleurs
-const redColor = new Color("Red", "#f54242", [0, 90, 61], 15)
-const blueColor = new Color("Blue", "#2ecbff", [195, 100, 59], 30)
-const greenColor = new Color("Green", "#47e32b", [111, 77, 53], 38)
-const yellowColor = new Color("Yellow", "#e5e82a", [61, 81, 54], 10)
-const purpleColor = new Color("Purple", "#7130c7", [266, 61, 48], 25)
+const redColor = new Color("Red", "#f54242", [350, 15], [25, 100], [20, 100])
+const blueColor = new Color("Blue", "#2ecbff", [160, 240], [25, 100], [20, 100])
+const greenColor = new Color("Green", "#47e32b", [80, 150], [25, 100], [20, 100])
+const yellowColor = new Color("Yellow", "#e5e82a", [40, 70], [25, 100], [20, 100])
+const purpleColor = new Color("Purple", "#7130c7", [240, 300], [25, 100], [20, 100])
+const blackColor = new Color("Black", "#121211", [0, 360], [0, 100], [0, 20])
+const whiteColor = new Color("White", "#f7f6f5", [0, 360], [0, 40], [70, 100])
 
 //Toute les couleurs sont stockés dans allColor
-const allColor = [redColor, blueColor, greenColor, yellowColor, purpleColor]
+const allColor = [redColor, blueColor, greenColor, yellowColor, purpleColor, blackColor, whiteColor]
 
 //Variable de test de la comparaison
-const testRGB = [113, 48, 199]
+const testRGB = [221, 232, 237]
 
 class RandomColor extends React.Component {
 
@@ -27,7 +29,7 @@ class RandomColor extends React.Component {
             //Couleur actuel affiché à l'écran
             currentColor: this.ChooseRandomColor(allColor),
             photoTaken: false,
-            averagePhotoRGB: [0,0,0]
+            averagePhotoRGB: [0, 0, 0]
         }
 
         //Style de Random color, semblable à du CSS
@@ -60,23 +62,23 @@ class RandomColor extends React.Component {
         //Code prise puis extraction Photo
 
         console.log("Take Photo")
-        this.setState({photoTaken: true, averagePhotoRGB: testRGB})
+        this.setState({ photoTaken: true, averagePhotoRGB: testRGB })
 
     }
 
     ShowVictory = () => {
 
-        if(this.state.photoTaken){
+        if (this.state.photoTaken) {
             console.log("Show Victory Photo Taken")
 
-            if(this.state.currentColor.CheckIfColorCorrespond(this.state.averagePhotoRGB)){
+            if (this.state.currentColor.CheckIfColorCorrespond(this.state.averagePhotoRGB)) {
                 console.log("Show Victory : VICTORY")
 
                 return (
                     <Text>Gagné !</Text>
                 )
             }
-            else{
+            else {
                 console.log("Show Victory : DEFEAT")
 
                 return (
@@ -84,7 +86,7 @@ class RandomColor extends React.Component {
                 )
             }
         }
-        else{
+        else {
             return null
         }
     }

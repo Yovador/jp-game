@@ -1,9 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Text, View, Button } from 'react-native';
-import RandomColor from './components/RandomColor/RandomColor';
 import CameraAcces from './components/CameraAcces';
-import ColorPicker from './components/ColorPicker';
 import styles from './AppStyles'
 import GetPixelColor from 'react-native-get-pixel-color';
 
@@ -55,7 +53,6 @@ export default class App extends React.Component {
         <View style={[styles.container, additionalStyles]}>
 
           <Button title="Menu" onPress={() => { this.ChangeAppState(0) }} />
-          <RandomColor changeBGC={this.ChangeBackgroundColor} />
           <CameraAcces></CameraAcces>
         </View>
       )

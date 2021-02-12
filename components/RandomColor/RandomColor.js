@@ -28,8 +28,6 @@ class RandomColor extends React.Component {
         this.state = {
             //Couleur actuel affiché à l'écran
             currentColor: this.ChooseRandomColor(allColor),
-            photoTaken: false,
-            averagePhotoRGB: [0, 0, 0]
         }
 
         //Style de Random color, semblable à du CSS
@@ -55,23 +53,17 @@ class RandomColor extends React.Component {
 
     GenerateNewColor = () => {
         console.log("GenerateNewColor")
-        this.setState({ currentColor: this.ChooseRandomColor(allColor), photoTaken: false })
+        this.setState({ currentColor: this.ChooseRandomColor(allColor)})
+        this.props.ResetPhoto()
     }
 
-    TakePhoto = () => {
-        //Code prise puis extraction Photo
-
-        console.log("Take Photo")
-        this.setState({ photoTaken: true, averagePhotoRGB: testRGB })
-
-    }
 
     ShowVictory = () => {
 
-        if (this.state.photoTaken) {
-            console.log("Show Victory Photo Taken")
+        console.log("Show Victory Photo Taken", this.props.colorToTest)
 
-            if (this.state.currentColor.CheckIfColorCorrespond(this.state.averagePhotoRGB)) {
+        if (this.props.colorToTest != null) {
+            if (this.state.currentColor.CheckIfColorCorrespond(this.props.colorToTest)) {
                 console.log("Show Victory : VICTORY")
 
                 return (
@@ -86,26 +78,21 @@ class RandomColor extends React.Component {
                 )
             }
         }
-        else {
-            return null
-        }
     }
 
-    render() {
-        console.log("Rendering...")
-        console.log(testRGB)
-        let styles = this.styles
-        const { currentColor } = this.state
+render() {
+    console.log("Rendering...")
+    let styles = this.styles
+    const { currentColor } = this.state
 
-        return (
-            <View style={styles.container} >
-                {this.ShowVictory()}
-                <Text> {currentColor.name + " : " + currentColor.backgroundColor} </Text>
-                <Button title="New Color" onPress={() => { this.GenerateNewColor() }} />
-                <Button title="Check Color Test" onPress={() => { this.TakePhoto() }} />
-            </View>
-        );
-    }
+    return (
+        <View style={styles.container} >
+            {this.ShowVictory()}
+            <Text> {currentColor.name + " : " + currentColor.backgroundColor} </Text>
+            <Button title="New Color" onPress={() => { this.GenerateNewColor() }} />
+        </View>
+    );
+}
 
 }
 

@@ -1,20 +1,20 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\eva-v\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo-permissions@~10.0.0
+  C:\Program Files\nodejs\node.exe C:\Users\yovad\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo-image-picker@~9.2.0
 
 PATH: 
-  C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Users\eva-v\AppData\Local\Microsoft\WindowsApps;C:\Users\eva-v\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\eva-v\AppData\Roaming\npm;C:\Users\eva-v\AppData\Local\GitHubDesktop\bin
+  C:\Users\yovad\AppData\Roaming\npm;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v9.0\libnvvp;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0\libnvvp;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git LFS;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\Program Files\TortoiseSVN\bin;C:\Ruby27-x64\bin;C:\Users\yovad\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\yovad\AppData\Local\Programs\Python\Python37\;C:\Users\yovad\AppData\Local\Microsoft\WindowsApps;C:\Users\yovad\AppData\Local\GitHubDesktop\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.0;C:\Users\yovad\AppData\Local\Microsoft\WindowsApps;C:\Users\yovad\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\yovad\.dotnet\tools
 
 Yarn version: 
   1.22.10
 
 Node version: 
-  14.15.0
+  14.13.1
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'D:\IUT\2A\jp-game\node_modules\@babel\plugin-external-helpers\lib'
+  Error: EPERM: operation not permitted, unlink 'C:\Users\yovad\Documents\COURS\JS\JP\ProjetGroupe\jp-game\node_modules\@babel\plugin-external-helpers\lib'
 
 npm manifest: 
   {
@@ -29,12 +29,17 @@ npm manifest:
     "dependencies": {
       "expo": "~40.0.0",
       "expo-camera": "~9.1.0",
+      "expo-image-picker": "~9.2.0",
+      "expo-permissions": "~10.0.0",
       "expo-status-bar": "~1.0.3",
       "react": "16.13.1",
       "react-dom": "16.13.1",
       "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+      "react-native-dominant-color": "^1.0.0",
       "react-native-get-pixel-color": "^1.1.0-alpha.23",
-      "react-native-web": "~0.13.12"
+      "react-native-pixel-color": "0.0.5",
+      "react-native-web": "~0.13.12",
+      "react-palette": "^1.0.2"
     },
     "devDependencies": {
       "@babel/core": "~7.9.0"
@@ -2971,6 +2976,14 @@ Lockfile:
       fbjs "1.0.0"
       fontfaceobserver "^2.1.0"
   
+  expo-image-picker@~9.2.0:
+    version "9.2.1"
+    resolved "https://registry.yarnpkg.com/expo-image-picker/-/expo-image-picker-9.2.1.tgz#113a46bfc8ef9bf675e8700b1bf7b8472f4de516"
+    integrity sha512-IPrBY7+zgxUUZqjtLVfj+PTKMm6lmI48Z9b8BKJhY/gF49g/cDZwWN0mrg+3G3a3ug5TtIr+pektsNWp1V+T1g==
+    dependencies:
+      expo-permissions "~10.0.0"
+      uuid "7.0.2"
+  
   expo-keep-awake@~8.4.0:
     version "8.4.0"
     resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-8.4.0.tgz#346d0988e6364c46050fef4b7829f302ef3e603d"
@@ -5176,6 +5189,16 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
     integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
   
+  react-native-get-pixel-color@^1.1.0-alpha.23:
+    version "1.1.0-alpha.23"
+    resolved "https://registry.yarnpkg.com/react-native-get-pixel-color/-/react-native-get-pixel-color-1.1.0-alpha.23.tgz#beeaa34ed64d0fa75e96fd84bbca5cea2cd873bf"
+    integrity sha512-f1UNKy0oKwu4rYmJmMq/ocO7OIL+O+ZLWec2FZY1SW7lEisSc+EbB6CvoV9aTqiq/WleZTqrDm6YAG+HBYHfGw==
+  
+  react-native-pixel-color@0.0.5:
+    version "0.0.5"
+    resolved "https://registry.yarnpkg.com/react-native-pixel-color/-/react-native-pixel-color-0.0.5.tgz#3f6631cc139b92ef1e58c1e5b851bb421a06e3e6"
+    integrity sha512-S6caumdz+CbLarwJOkcjIud2gSYs2SLRqP8qGnzzql4siDGzeBH4ycih+8cPZHmUQyoo7ARJeqi6l2qru2BKLA==
+  
   react-native-safe-area-context@3.1.9:
     version "3.1.9"
     resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.1.9.tgz#48864ea976b0fa57142a2cc523e1fd3314e7247e"
@@ -6162,6 +6185,11 @@ Lockfile:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
     integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+  
+  uuid@7.0.2:
+    version "7.0.2"
+    resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.2.tgz#7ff5c203467e91f5e0d85cfcbaaf7d2ebbca9be6"
+    integrity sha512-vy9V/+pKG+5ZTYKf+VcphF5Oc6EFiu3W8Nv3P3zIh0EqVI80ZxOzuPfe9EHjkFNvf8+xuTHVeei4Drydlx4zjw==
   
   uuid@^3.3.2, uuid@^3.4.0:
     version "3.4.0"

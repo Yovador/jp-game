@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View, Button, Image } from 'react-native';
 import CameraAcces from './components/CameraAcces';
 import styles from './AppStyles'
-import GetPixelColor from 'react-native-get-pixel-color';
 import RandomColor from './components/RandomColor/RandomColor';
+import GetAverage from './components/ColorPicker';
+
 
 export default class App extends React.Component {
 
@@ -13,8 +14,11 @@ export default class App extends React.Component {
 
     this.state = {
       appState: 0,                   //État de l'app. 0: Menu principal, 1: Dans le jeu
-      backgroundColor: "#6ecff0"      //Couleur de Fond
+      backgroundColor: "#6ecff0",      //Couleur de Fond
+      photo : null
     }
+
+    
   }
 
 
@@ -26,17 +30,23 @@ export default class App extends React.Component {
 
   //Change La Couleur de Fond
   ChangeBackgroundColor = (value) => {
+
     console.log("BackgroundColorChange", value)
     this.setState({ backgroundColor: value })
-    
+
   }
 
-  func = (id, value) =>{
-    tab[id] = value;
+  GetPhoto = (photo) => {
+    console.log("GetPhoto")
+    this.setState({photo: photo})
   }
-
+  
+  ResetPhoto = () => {
+    this.setState({photo: null})
+  } 
 
   render() {
+    
 
     const additionalStyles = { backgroundColor: this.state.backgroundColor }
 
@@ -45,10 +55,8 @@ export default class App extends React.Component {
       return (
         <View style={[styles.container, additionalStyles]}>
           <StatusBar></StatusBar>
-
           <Text>CATCH THE COLOR</Text>
           <Button title="Start" onPress={() => { this.ChangeAppState(1) }} />
-
         </View>
       )
 
@@ -60,8 +68,8 @@ export default class App extends React.Component {
 
           <StatusBar></StatusBar>
           <Button title="Menu" onPress={() => { this.ChangeAppState(0) }} />
-          <RandomColor changeBGC = {this.ChangeBackgroundColor}/>
-          <CameraAcces></CameraAcces>
+          <RandomColor ResetPhoto= {this.ResetPhoto} colorToTest = { this.state.photo != null ? GetAverage(this.state.photo.uri, this.state.heigth, this.state.width) : null }  changeBGC={this.ChangeBackgroundColor} />
+          <CameraAcces SendPhoto = {this.GetPhoto}> </CameraAcces>
         </View>
       )
 
@@ -69,4 +77,3 @@ export default class App extends React.Component {
   }
 }
 
- 

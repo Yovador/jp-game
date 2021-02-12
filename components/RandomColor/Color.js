@@ -84,17 +84,17 @@ export default class Color {
             s = delta / (1 - Math.abs(2 * l - 1))
         }
 
-        s = Math.round(s *100)
-        l = Math.round(l *100)
+        s = Math.round(s * 100)
+        l = Math.round(l * 100)
 
 
         let isColorCorresponding = false;
         console.log(this.hMinMax, this.sMinMax, this.lMinMax)
         console.log(h, s, l)
 
-        if(this.hMinMax[0] > this.hMinMax[1]){
+        if (this.hMinMax[0] > this.hMinMax[1]) {
 
-            if ( ( (h >= this.hMinMax[0] && h <= 360 ) || ( h >= 0 && h <= this.hMinMax[1] ) ) &&
+            if (((h >= this.hMinMax[0] && h <= 360) || (h >= 0 && h <= this.hMinMax[1])) &&
                 s >= this.sMinMax[0] && s <= this.sMinMax[1] &&
                 l >= this.lMinMax[0] && l <= this.lMinMax[1]
             ) {
@@ -105,7 +105,7 @@ export default class Color {
             }
 
         }
-        else{
+        else {
 
             if (h >= this.hMinMax[0] && h <= this.hMinMax[1] &&
                 s >= this.sMinMax[0] && s <= this.sMinMax[1] &&

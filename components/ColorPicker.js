@@ -54,9 +54,9 @@ const GetAverage = (imgPath, heigth, width) => {
   averageB = averageB / (width*heigth)
  
   /* On set manuellement les différentes moyennes pour pouvoir essayer le programme malgré la librairie non fonctionnelle */
-  averageR = 131
-  averageG = 21
-  averageB = 214
+  averageR = 201
+  averageG = 22
+  averageB = 22
 
   return [averageR, averageG, averageB]
 }

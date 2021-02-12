@@ -26,6 +26,7 @@ export default class App extends React.Component {
   ChangeAppState = (value) => {
     console.log("ChangeAppState", value)
     this.setState({ appState: value })
+    this.setState({photo: null})
   }
 
   //Change La Couleur de Fond
@@ -65,10 +66,11 @@ export default class App extends React.Component {
 
       return (
         <View style={[styles.container, additionalStyles]}>
-
-          <StatusBar></StatusBar>
-          <Button title="Menu" onPress={() => { this.ChangeAppState(0) }} />
-          <RandomColor ResetPhoto= {this.ResetPhoto} colorToTest = { this.state.photo != null ? GetAverage(this.state.photo.uri, this.state.heigth, this.state.width) : null }  changeBGC={this.ChangeBackgroundColor} />
+          <StatusBar barStyle = "dark-content" hidden = {false} backgroundColor = "#00BCD4" translucent = {true}/>
+          <View style={styles.buttons}>
+            <Button title="Menu" onPress={() => { this.ChangeAppState(0) }} />
+            <RandomColor ResetPhoto= {this.ResetPhoto} colorToTest = { this.state.photo != null ? GetAverage(this.state.photo.uri, this.state.heigth, this.state.width) : null }  changeBGC={this.ChangeBackgroundColor} />
+          </View>
           <CameraAcces SendPhoto = {this.GetPhoto}> </CameraAcces>
         </View>
       )

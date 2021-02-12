@@ -48,6 +48,10 @@ export default class App extends React.Component {
   }
 
   onPictureSaved = photo => {
+    this.SendPhoto(photo)
+  }
+
+  SendPhoto = (photo) =>{
     console.log("Clic photo")
     console.log("Photo :", photo)
     this.props.SendPhoto(photo)
@@ -58,6 +62,8 @@ export default class App extends React.Component {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images
     });
+    
+    this.SendPhoto(result)
   }
 
 
